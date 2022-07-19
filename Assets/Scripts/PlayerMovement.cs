@@ -6,19 +6,28 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private bool isGrounded = true;
-    private bool hasJumped = false;
+    private bool canJump = false;
+    private bool canDoubleJump = true;
     public float jumpForce = 500f;
     public Transform body;
+
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if(isGrounded == true)
+            if(isGrounded)
             {
                 Debug.Log("Jump");
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
              
+            }
+            else if (!isGrounded && canDoubleJump == true)
+            {
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
+                gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                canDoubleJump = false;
             }
             
         }
@@ -31,10 +40,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(body.transform.position, dir, out hit, distance))
         {
+            //canJump = true;
             isGrounded = true;
+            canDoubleJump = true;
         }
         else
         {
+            //canJ
             isGrounded = false;
         }
         
@@ -49,6 +61,6 @@ void Start()
     void Update()
     {
         GroundCheck();
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
     }
 }
