@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class BodyCollision : MonoBehaviour
 {
+    private bool isGrounded = true;
     public Transform head;
     public Transform feet;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+ 
         gameObject.transform.position = new Vector3(head.position.x, feet.position.y, head.position.z);
     }
 }
