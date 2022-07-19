@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDelay = 3f;
     public Transform body;
     public Transform camera;
+    public GameObject jumpParticle;
 
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
@@ -24,13 +25,14 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Jump");
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
-             
+
             }
             else if (!isGrounded && canDoubleJump == true)
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
                 canDoubleJump = false;
+                Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
             }
             
         }
