@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private bool isGrounded = true;
-    private bool canJump = false;
+    private bool canDash = true;
     private bool canDoubleJump = true;
     public float jumpForce = 500f;
+    public float dashSpeed = 100f;
+    public float dashDelay = 3f;
     public Transform body;
+    public Transform camera;
 
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
@@ -31,6 +34,29 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
+    }
+
+    public void DashSlash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (canDash)
+            {
+                StartCoroutine(DashCoroutine());
+            } 
+        }
+    }
+
+    IEnumerator DashCoroutine()
+    {
+        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
+        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
+        canDash = false;
+        gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,0);
+        yield return new WaitForSeconds(dashDelay);
+        canDash = true;
     }
     void GroundCheck()
     {

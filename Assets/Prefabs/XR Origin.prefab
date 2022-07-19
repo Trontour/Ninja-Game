@@ -116,7 +116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 500
+  dashSpeed: 100
+  dashDelay: 3
   body: {fileID: 4745578052333825277}
+  camera: {fileID: 0}
 --- !u!114 &746043570
 MonoBehaviour:
   m_ObjectHideFlags: 0
