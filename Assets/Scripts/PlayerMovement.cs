@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump = true;
     public float jumpForce = 500f;
     public Transform body;
+
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
     {
@@ -18,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
             if(isGrounded)
             {
                 Debug.Log("Jump");
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
              
             }
             else if (!isGrounded && canDoubleJump == true)
             {
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
                 canDoubleJump = false;
             }
