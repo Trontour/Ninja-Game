@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Transform feet;
+    public float jumpForce = 500f;
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            //feet.transform.position += new Vector3(0, -1, 0);
+            Debug.Log("Jump");
+            gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
         }
     }
     void Start()
