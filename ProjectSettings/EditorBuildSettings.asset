@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lucius's Scene.unity
-    guid: be5d5edd527fed24087e06545c9eb0ab
+    path: Assets/Scenes/Trontour's Scene.unity
+    guid: 68985073a2b9efe4f910acdad0af2496
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fc3bd0f09154a0a4089e8023c60255b2, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 987d5e515a438d740b4ee11bf6b4a557, type: 2}
