@@ -120,6 +120,8 @@ MonoBehaviour:
   dashDelay: 3
   body: {fileID: 4745578052333825277}
   camera: {fileID: 4745578051922814508}
+  jumpParticle: {fileID: 0}
+  dashParticle: {fileID: 0}
 --- !u!114 &746043570
 MonoBehaviour:
   m_ObjectHideFlags: 0

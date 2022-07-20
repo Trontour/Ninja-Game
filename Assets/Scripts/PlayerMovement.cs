@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
+    public GameObject dashParticle;
 
     // Start is called before the first frame update
     public void Jump(InputAction.CallbackContext context)
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canDash = false;
         gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
+        GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,0);
         yield return new WaitForSeconds(dashDelay);

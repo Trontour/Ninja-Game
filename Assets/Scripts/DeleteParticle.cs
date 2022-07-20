@@ -14,6 +14,7 @@ public class DeleteParticle : MonoBehaviour
     IEnumerator DeletePart()
     {
         yield return new WaitForSeconds(2f);
-        Destroy(this);
+        Destroy(gameObject);
+
     }
 }
