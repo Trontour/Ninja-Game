@@ -117,9 +117,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 500
   dashSpeed: 10000
+  superJumpForce: 3000
   dashDelay: 3
+  superJumpDelay: 1
   body: {fileID: 4745578052333825277}
   camera: {fileID: 4745578051922814508}
+  jumpParticle: {fileID: 5405183139409696605, guid: a32b92f10f0005745879da7adb14b148, type: 3}
+  dashParticle: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
 --- !u!114 &746043570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +306,19 @@ MonoBehaviour:
     m_ActionId: 00a4dc9f-1ee6-4349-b0e9-72d5dccaadd6
     m_ActionName: XRI RightHand Locomotion/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 746043569}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: SuperJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6a7f0587-3a4a-43d4-970e-c09e936260cb
     m_ActionName: XRI RightHand Interaction/Primary Button
   - m_PersistentCalls:
