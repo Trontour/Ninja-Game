@@ -117,7 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 500
   dashSpeed: 10000
+  superJumpForce: 1500
   dashDelay: 3
+  superJumpDelay: 20
   body: {fileID: 4745578052333825277}
   camera: {fileID: 4745578051922814508}
   jumpParticle: {fileID: 0}
