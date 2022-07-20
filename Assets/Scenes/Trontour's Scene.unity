@@ -332,6 +332,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3213964002910027161, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
+      propertyPath: attackRange
+      value: 13.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213964002910027161, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
+      propertyPath: shurikenSpeed
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213964002910027161, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
+      propertyPath: detectionRange
+      value: 29.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3213964002910027163, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
       propertyPath: m_Name
       value: Ninja
@@ -1726,6 +1738,63 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1565513229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.513
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.1360002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360515237231703308, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363367787364391098, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
+      propertyPath: m_Name
+      value: EnemyShuriken
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
 --- !u!114 &1988182318 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}

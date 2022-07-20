@@ -14,6 +14,9 @@ public class enemy_move : MonoBehaviour
     public Animator animator;
     public float detectionRange;
     public float attackRange;
+    public float shurikenSpeed = 3000f;
+    public GameObject shuriken;
+
     void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
@@ -99,6 +102,13 @@ public class enemy_move : MonoBehaviour
 
     IEnumerator ninjaThrowDelay()
     {
+        //ATTACK HERE
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+
+        //create the rotation we need to be in to look at the target
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        GameObject shurik = Instantiate(shuriken, transform.position + new Vector3(0, 1, 0), transform.rotation);
+        shurik.GetComponent<Rigidbody>().AddForce(direction * shurikenSpeed);
         yield return new WaitForSeconds(2);
         isAttacking = false;
         animator.SetBool("isAttacking", false);
