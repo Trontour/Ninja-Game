@@ -1,0 +1,127 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerMovement : MonoBehaviour
+{
+    private bool isGrounded = true;
+    private bool canDash = true;
+    private bool canDoubleJump = true;
+    private bool canSuperJump = true;
+    public float jumpForce = 500f;
+    public float dashSpeed = 100f;
+    public float superJumpForce = 6000f;
+    public float dashDelay = 3f;
+    public float superJumpDelay = 20f;
+    public Transform body;
+    public Transform camera;
+    public GameObject jumpParticle;
+    public GameObject dashParticle;
+
+    // Start is called before the first frame update
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if(isGrounded)
+            {
+                Debug.Log("Jump");
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
+                gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+
+            }
+            else if ((!isGrounded && canDoubleJump == true))
+            {
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
+                gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                canDoubleJump = false;
+                Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
+            }
+            
+        }
+    }
+
+    public void DashSlash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (canDash)
+            {
+                StartCoroutine(DashCoroutine());
+            } 
+        }
+    }
+  
+
+    IEnumerator DashCoroutine()
+    {
+        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
+        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
+        canDash = false;
+        gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
+        GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,0);
+        yield return new WaitForSeconds(dashDelay);
+        canDash = true;
+    }
+
+    public void SuperJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
+            if (canSuperJump)
+            {
+                Debug.Log("SuperJump");
+                StartCoroutine(JumpCoroutine());
+            }
+        }
+    }
+
+    IEnumerator JumpCoroutine()
+    {
+        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
+        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
+        canSuperJump = false;
+        gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
+        //GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
+        //yield return new WaitForSeconds(0.3f);
+       //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(superJumpDelay);
+        canSuperJump = true;
+    }
+    void GroundCheck()
+    {
+        RaycastHit hit;
+        float distance = .55f;
+        Vector3 dir = new Vector3(0, -1, 0);
+
+        if (Physics.Raycast(body.transform.position, dir, out hit, distance))
+        {
+            //canJump = true;
+            isGrounded = true;
+            canDoubleJump = true;
+        }
+        else
+        {
+            //canJ
+            isGrounded = false;
+        }
+        
+    }
+
+void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        GroundCheck();
+        //Debug.Log(isGrounded);
+    }
+}
