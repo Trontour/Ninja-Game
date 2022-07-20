@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool canDoubleJump = true;
     private bool canSuperJump = true;
+    private bool canThrowShuriken = true;
     public float jumpForce = 500f;
     public float dashSpeed = 100f;
     public float superJumpForce = 6000f;
     public float shurikenSpeed = 200f;
     public float dashDelay = 3f;
     public float superJumpDelay = 20f;
+    public float shurikenDelay = 2.5f;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
@@ -116,10 +118,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            GameObject shurik = Instantiate(shuriken, lefthand.position, lefthand.rotation);
-            shurik.GetComponent<Rigidbody>().AddForce(lefthand.forward * shurikenSpeed);
+            if (canThrowShuriken)
+            {
+                StartCoroutine(ShurikenCoroutine());
+            }
+            
         }
         
+    }
+
+    IEnumerator ShurikenCoroutine()
+    {
+        canThrowShuriken = false;
+        GameObject shurik = Instantiate(shuriken, lefthand.position, lefthand.rotation);
+        shurik.GetComponent<Rigidbody>().AddForce(lefthand.forward * shurikenSpeed);
+        yield return new WaitForSeconds(shurikenDelay);
+        canThrowShuriken = true;
     }
 
     // Update is called once per frame
