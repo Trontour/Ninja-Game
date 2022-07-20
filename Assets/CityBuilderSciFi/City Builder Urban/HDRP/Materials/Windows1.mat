@@ -25,7 +25,7 @@ Material:
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -157,7 +157,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowFrame:
-        m_Texture: {fileID: 2800000, guid: 7a92f54d21173d7428f1bb1b7daf6e26, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0aad9a7dc5850e74b91d6ec79d29428f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowFrameNormal:
@@ -165,12 +165,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_5EDD539D: 1
     - Vector1_3317ECBB: 1
     - Vector1_401D572F: 9.95
     - Vector1_4DB5CF99: 0.36
     - Vector1_50C0A95D: 1.29
     - Vector1_8B3ECE2F: 0.3
+    - Vector1_8C65C3F3: 0.2
     - Vector1_9AB36CC3: -0.13
+    - Vector1_D03463CF: 0
     - Vector1_DB124B4: 4.65
     - Vector1_F4785BA6: 120
     - _AORemapMax: 1
@@ -197,8 +200,8 @@ Material:
     - _DetailSmoothnessScale: 1
     - _DiffusionProfile: 0
     - _DiffusionProfileHash: 0
-    - _DirtPower: 0.29
-    - _DirtTiling: 6.42
+    - _DirtPower: 0.294
+    - _DirtTiling: 6.36
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
@@ -271,16 +274,16 @@ Material:
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
     - _SrcBlend: 1
-    - _StencilRef: 0
-    - _StencilRefDepth: 8
-    - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
-    - _StencilWriteMask: 6
-    - _StencilWriteMaskDepth: 8
-    - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskGBuffer: 14
-    - _StencilWriteMaskMV: 40
+    - _StencilRef: 2
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 64
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 128
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 48
+    - _StencilWriteMaskDistortionVec: 64
+    - _StencilWriteMaskGBuffer: 51
+    - _StencilWriteMaskMV: 176
     - _Stiffness: 1
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
@@ -309,6 +312,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_DB1DC334: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
+    - Vector2_8847C918: {r: 0, g: 0, b: 0, a: 0}
+    - Vector4_421FB86D: {r: 1, g: 1, b: 0, a: 0}
     - Vector4_75696920: {r: 1, g: 1, b: 0, a: 0}
     - Vector4_D020E36B: {r: 4, g: 6.39, b: 0, a: -2.73}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -323,7 +328,7 @@ Material:
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _TilingAndOffset: {r: 5.59, g: 5.96, b: 0.97, a: -0.65}
+    - _TilingAndOffset: {r: 2, g: 2, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
