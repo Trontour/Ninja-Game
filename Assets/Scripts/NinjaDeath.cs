@@ -16,7 +16,7 @@ public class NinjaDeath : MonoBehaviour
         if (collisionInfo.tag == "Weapon")
         {
             Debug.Log("You hit the enemy!");
-            
+            Destroy(gameObject);
         }
     }
 }
