@@ -41,10 +41,9 @@ GameObject:
   - component: {fileID: 1449522332030078911}
   - component: {fileID: 1469997307288404279}
   - component: {fileID: 1461171709192090433}
-  - component: {fileID: 8613046233466824149}
   m_Layer: 0
   m_Name: Evil_spirit_katana
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8613046233466824149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447345588903596717}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.104887, y: 0.5382926, z: 0.0648427}
-  m_Center: {x: -6.058826, y: 0.008423616, z: 0.038584292}
 --- !u!1 &2545049473558837853
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,10 +124,12 @@ GameObject:
   - component: {fileID: 8413863074202197990}
   - component: {fileID: 7863891576550605432}
   - component: {fileID: 2432081134346054988}
-  - component: {fileID: 1209620033758634066}
+  - component: {fileID: 4377276088499589836}
+  - component: {fileID: 1736567799289884143}
+  - component: {fileID: 7975625440366364633}
   m_Layer: 0
   m_Name: Katana
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +149,7 @@ Transform:
   - {fileID: 1446718999730251410}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &3018904816274444733
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -240,8 +228,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1209620033758634066
+  m_CollisionDetection: 1
+--- !u!114 &4377276088499589836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,3 +344,29 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &1736567799289884143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545049473558837853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012730718, y: 0.7378852, z: 0.024578333}
+  m_Center: {x: -0.0007004142, y: 0.47180334, z: -0.0032354593}
+--- !u!65 &7975625440366364633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545049473558837853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.042621493, y: 0.7378852, z: 0.042349815}
+  m_Center: {x: -0.0024674535, y: 0.47180334, z: -0.0039231777}
