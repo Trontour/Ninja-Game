@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
         //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canSuperJump = false;
+        Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
         gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
         //GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
         //yield return new WaitForSeconds(0.3f);
