@@ -9,10 +9,11 @@ public class enemy_move : MonoBehaviour
     GameObject player;
     float distToPlayer;
     bool playerNoticed = false;
+    bool isAttacking = false;
 
     public Animator animator;
     public float detectionRange;
-
+    public float attackRange;
     void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
@@ -23,6 +24,20 @@ public class enemy_move : MonoBehaviour
     void Update()
     {
         distToPlayer = Vector3.Distance(enemy.transform.position, player.transform.position);
+        NinjaMovement();
+        NinjaAttacking();
+
+    }
+
+
+
+
+
+
+
+
+    void NinjaMovement()
+    {
         if (distToPlayer < detectionRange) //Player within range
         {
             enemy.isStopped = false;
@@ -43,7 +58,50 @@ public class enemy_move : MonoBehaviour
                 playerNoticed = false;
                 animator.SetBool("isPlayerNoticed", false);
             }
+
         }
+    }
+
+
+
+
+
+
+
+
+    void NinjaAttacking()
+    {
+        if (distToPlayer < attackRange) //Player within range
+        {
+            enemy.isStopped = true;
+
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                animator.SetBool("isAttacking", true);
+                StartCoroutine(ninjaThrowDelay());
+
+            }
+        }
+        else //Player not within range
+        {
+
+            if (isAttacking)
+            {
+                isAttacking = false;
+                animator.SetBool("isAttacking", false);
+
+            }
+
+        }
+    }
+
+
+    IEnumerator ninjaThrowDelay()
+    {
+        yield return new WaitForSeconds(2);
+        isAttacking = false;
+        animator.SetBool("isAttacking", false);
     }
 
     void OnDrawGizmosSelected()
