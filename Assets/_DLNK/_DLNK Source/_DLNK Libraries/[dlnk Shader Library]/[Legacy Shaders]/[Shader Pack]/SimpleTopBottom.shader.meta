@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 02143495406a2c34d8ffbb7175b730ea
+timeCreated: 1452800264
+licenseType: Store
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _OcclusionMap: {fileID: 2800000, guid: b12ca1b0c12efad45aa846dbcc7baf3d, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
