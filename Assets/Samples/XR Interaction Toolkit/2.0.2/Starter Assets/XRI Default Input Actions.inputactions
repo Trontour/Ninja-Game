@@ -800,7 +800,7 @@
                 {
                     "name": "Primary Button",
                     "type": "Button",
-                    "id": "6a7f0587-3a4a-43d4-970e-c09e936260cb",
+                    "id": "983b1fa6-0de8-4d1c-952c-ecb668268d9a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -809,7 +809,7 @@
                 {
                     "name": "Secondary Button",
                     "type": "Button",
-                    "id": "f0dce66a-5ec1-40bb-90a4-adf15b0bd92a",
+                    "id": "2061c123-1e38-4b34-b60a-78813981c9ed",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -995,7 +995,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5a8b9aea-9cfc-457c-b39c-c769512daa23",
+                    "id": "58f431f4-eb1e-441b-8b94-2ba225e165e8",
                     "path": "<XRController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
@@ -1006,11 +1006,11 @@
                 },
                 {
                     "name": "",
-                    "id": "40064c1a-ffb4-4dd0-8430-0aa3e3299450",
+                    "id": "c4afd1bc-9452-40ab-8996-8aeae866b342",
                     "path": "<XRController>{RightHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Generic XR Controller",
                     "action": "Secondary Button",
                     "isComposite": false,
                     "isPartOfComposite": false

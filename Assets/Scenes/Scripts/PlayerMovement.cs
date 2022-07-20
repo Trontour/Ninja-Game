@@ -13,18 +13,61 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 500f;
     public float dashSpeed = 100f;
     public float superJumpForce = 6000f;
-    public float shurikenSpeed = 200f;
+    public float shurikenSpeed = 3500f;
     public float dashDelay = 3f;
     public float superJumpDelay = 20f;
     public float shurikenDelay = 2.5f;
+    public int minSpawnRange = 20;
+    public int maxSpawnRange = 50;
+    public int numEnemies = 100;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
     public GameObject dashParticle;
     public GameObject shuriken;
     public Transform lefthand;
+    public GameObject enemy;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        StartCoroutine(EnemySpawn());
+    }
+
+    IEnumerator EnemySpawn()
+    {
+        int enemyCount = 0;
+        while(enemyCount < numEnemies){
+            int xPos = 0;
+            int zPos = 0;
+            int side = Random.Range(1, 4);
+            switch (side)
+            {
+                case 1:
+                    xPos = Random.Range((int)body.position.x + minSpawnRange, (int)body.position.x + maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 2:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 3:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 4:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z - minSpawnRange, (int)body.position.z - maxSpawnRange);
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log("SPAWN");
+            Instantiate(enemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+            enemyCount++;
+        }
+    }
 
     public void Jump(InputAction.CallbackContext context) //jump and double jump
     {

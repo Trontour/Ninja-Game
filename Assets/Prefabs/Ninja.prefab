@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6191457305326748475}
-  detectionRange: 12.86
+  detectionRange: 32.3
 --- !u!195 &4324423218697244409
 NavMeshAgent:
   m_ObjectHideFlags: 0
