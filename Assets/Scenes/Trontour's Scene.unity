@@ -428,24 +428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2dcaf60bbc95f149bf664c9163a5fd5, type: 3}
---- !u!1 &442155567 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
-  m_PrefabInstance: {fileID: 6445078845666333609}
+--- !u!4 &438870689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4745578051922814508, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+  m_PrefabInstance: {fileID: 4745578052343745368}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &442155568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442155567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7b02d62fdcde941aa09993072f8b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 746043568}
 --- !u!1001 &556911583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -874,11 +861,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &746043568 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4745578051602052087, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
-  m_PrefabInstance: {fileID: 4745578052343745368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &898852009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1781,13 +1763,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 442155568, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 438870689}
     - target: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
       propertyPath: m_Name
       value: Dash Electricity
       objectReference: {fileID: 0}
     - target: {fileID: 6445078845829239192, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
       propertyPath: ShapeModule.m_Position.z
-      value: 15.82
+      value: 15.43
       objectReference: {fileID: 0}
     - target: {fileID: 6445078845829239195, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
       propertyPath: m_RootOrder
