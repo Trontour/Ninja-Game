@@ -306,36 +306,12 @@ MonoBehaviour:
     m_ActionId: 00a4dc9f-1ee6-4349-b0e9-72d5dccaadd6
     m_ActionName: XRI RightHand Locomotion/Move
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 746043569}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: SuperJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6a7f0587-3a4a-43d4-970e-c09e936260cb
+      m_Calls: []
+    m_ActionId: 983b1fa6-0de8-4d1c-952c-ecb668268d9a
     m_ActionName: XRI RightHand Interaction/Primary Button
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 746043569}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f0dce66a-5ec1-40bb-90a4-adf15b0bd92a
+      m_Calls: []
+    m_ActionId: 2061c123-1e38-4b34-b60a-78813981c9ed
     m_ActionName: XRI RightHand Interaction/Secondary Button
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 

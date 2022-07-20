@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
-  m_MoveSpeed: 3
+  m_MoveSpeed: 6
   m_EnableStrafe: 1
   m_UseGravity: 0
   m_GravityApplicationMode: 0
@@ -2385,6 +2385,10 @@ PrefabInstance:
       value: 2061c123-1e38-4b34-b60a-78813981c9ed
       objectReference: {fileID: 0}
     - target: {fileID: 746043570, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+      propertyPath: m_ActionEvents.Array.data[36].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: m_ActionEvents.Array.data[37].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2450,7 +2454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4745578051602052087, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 4745578051602052087, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: m_LocalPosition.z
