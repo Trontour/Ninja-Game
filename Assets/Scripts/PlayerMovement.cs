@@ -8,15 +8,19 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = true;
     private bool canDash = true;
     private bool canDoubleJump = true;
+    private bool canSuperJump = true;
     public float jumpForce = 500f;
     public float dashSpeed = 100f;
+    public float superJumpForce = 6000f;
     public float dashDelay = 3f;
+    public float superJumpDelay = 20f;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
     public GameObject dashParticle;
 
     // Start is called before the first frame update
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -28,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
 
             }
-            else if (!isGrounded && canDoubleJump == true)
+            else if ((!isGrounded && canDoubleJump == true))
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             } 
         }
     }
+  
 
     IEnumerator DashCoroutine()
     {
@@ -61,6 +66,32 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0,0);
         yield return new WaitForSeconds(dashDelay);
         canDash = true;
+    }
+
+    public void SuperJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
+            if (canSuperJump)
+            {
+                Debug.Log("SuperJump");
+                StartCoroutine(JumpCoroutine());
+            }
+        }
+    }
+
+    IEnumerator JumpCoroutine()
+    {
+        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
+        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
+        canSuperJump = false;
+        gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
+        //GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
+        //yield return new WaitForSeconds(0.3f);
+       //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(superJumpDelay);
+        canSuperJump = true;
     }
     void GroundCheck()
     {
