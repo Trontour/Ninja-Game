@@ -12,16 +12,19 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 500f;
     public float dashSpeed = 100f;
     public float superJumpForce = 6000f;
+    public float shurikenSpeed = 200f;
     public float dashDelay = 3f;
     public float superJumpDelay = 20f;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
     public GameObject dashParticle;
+    public GameObject shuriken;
+    public Transform lefthand;
 
     // Start is called before the first frame update
 
-    public void Jump(InputAction.CallbackContext context)
+    public void Jump(InputAction.CallbackContext context) //jump and double jump
     {
         if (context.performed)
         {
@@ -43,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void DashSlash(InputAction.CallbackContext context)
+    public void DashSlash(InputAction.CallbackContext context) //dash attack
     {
         if (context.performed)
         {
@@ -55,10 +58,8 @@ public class PlayerMovement : MonoBehaviour
     }
   
 
-    IEnumerator DashCoroutine()
+    IEnumerator DashCoroutine()//dash couratine and animation
     {
-        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
-        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canDash = false;
         gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
         GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-    public void SuperJump(InputAction.CallbackContext context)
+    public void SuperJump(InputAction.CallbackContext context) //super vertical jump
     {
         if (context.performed)
         {
@@ -81,10 +82,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator JumpCoroutine()
+    IEnumerator JumpCoroutine() //super vertical jump animation coroutine
     {
-        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
-        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canSuperJump = false;
         Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
         gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
@@ -111,11 +110,15 @@ public class PlayerMovement : MonoBehaviour
             //canJ
             isGrounded = false;
         }
-        
     }
 
-void Start()
+    public void ShurikenThrow(InputAction.CallbackContext context)
     {
+        if (context.performed)
+        {
+            GameObject shurik = Instantiate(shuriken, lefthand.position, lefthand.rotation);
+            shurik.GetComponent<Rigidbody>().AddForce(lefthand.forward * shurikenSpeed);
+        }
         
     }
 
@@ -123,6 +126,5 @@ void Start()
     void Update()
     {
         GroundCheck();
-        //Debug.Log(isGrounded);
     }
 }
