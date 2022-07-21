@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu Scene.unity
+    path: Assets/Scenes/End Game.unity
     guid: e6e020bd52262eb4386cebeac71d1ff2
   - enabled: 1
     path: Assets/Scenes/Lucius's Scene.unity
