@@ -118,12 +118,19 @@ MonoBehaviour:
   jumpForce: 500
   dashSpeed: 10000
   superJumpForce: 3000
+  shurikenSpeed: 200
   dashDelay: 3
   superJumpDelay: 1
+  shurikenDelay: 2.5
+  minSpawnRange: 30
+  maxSpawnRange: 200
   body: {fileID: 4745578052333825277}
   camera: {fileID: 4745578051922814508}
   jumpParticle: {fileID: 5405183139409696605, guid: a32b92f10f0005745879da7adb14b148, type: 3}
   dashParticle: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
+  shuriken: {fileID: 0}
+  lefthand: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!114 &746043570
 MonoBehaviour:
   m_ObjectHideFlags: 0
