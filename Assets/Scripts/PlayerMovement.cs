@@ -39,43 +39,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(EnemySpawn());
         audio = gameObject.GetComponent<AudioSource>();
     }
 
-    IEnumerator EnemySpawn()
-    {
-        int enemyCount = 0;
-        while(enemyCount < numEnemies){
-            int xPos = 0;
-            int zPos = 0;
-            int side = Random.Range(1, 4);
-            switch (side)
-            {
-                case 1:
-                    xPos = Random.Range((int)body.position.x + minSpawnRange, (int)body.position.x + maxSpawnRange);
-                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
-                    break;
-                case 2:
-                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
-                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
-                    break;
-                case 3:
-                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
-                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
-                    break;
-                case 4:
-                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
-                    zPos = Random.Range((int)body.position.z - minSpawnRange, (int)body.position.z - maxSpawnRange);
-                    break;
-                default:
-                    break;
-            }
-            Instantiate(enemy, new Vector3(xPos, 0, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(1f);
-            enemyCount++;
-        }
-    }
+    
 
     public void Jump(InputAction.CallbackContext context) //jump and double jump
     {
