@@ -495,6 +495,102 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4745578051602052085, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
   m_PrefabInstance: {fileID: 4745578052343745368}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &489670425
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489670424}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!65 &489670429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1762,6 +1858,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3213964002910027163, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
     - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+      propertyPath: dashSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
+    - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+      propertyPath: jumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
+    - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: lefthand
       value: 
       objectReference: {fileID: 332067656}
@@ -1770,6 +1874,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5363367787364391098, guid: d0fecbf79ab433b4cabb0fb32cbb354c, type: 3}
     - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+      propertyPath: shurikenSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d5dbe859bef1a884b85837f74f78ad1c, type: 3}
+    - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: dashParticle
       value: 
       objectReference: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
@@ -1777,6 +1885,10 @@ PrefabInstance:
       propertyPath: jumpParticle
       value: 
       objectReference: {fileID: 5405183139409696605, guid: a32b92f10f0005745879da7adb14b148, type: 3}
+    - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
+      propertyPath: superJumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
     - target: {fileID: 746043569, guid: ed8e1046e26152740a7cd9fe13f84dce, type: 3}
       propertyPath: maxSpawnRange
       value: 50

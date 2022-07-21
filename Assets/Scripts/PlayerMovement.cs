@@ -30,11 +30,17 @@ public class PlayerMovement : MonoBehaviour
     public GameObject shuriken;
     public Transform lefthand;
     public GameObject enemy;
+    public AudioClip jumpSFX;
+    public AudioClip dashSFX;
+    public AudioClip superJumpSFX;
+    public AudioClip shurikenSFX;
+    private AudioSource audio;
 
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(EnemySpawn());
+        audio = gameObject.GetComponent<AudioSource>();
     }
 
     IEnumerator EnemySpawn()
@@ -80,12 +86,14 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Jump");
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                audio.PlayOneShot(jumpSFX);
 
             }
             else if ((!isGrounded && canDoubleJump == true))
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                audio.PlayOneShot(jumpSFX);
                 canDoubleJump = false;
                 Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
             }
@@ -108,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator DashCoroutine()//dash couratine and animation
     {
         canDash = false;
+        audio.PlayOneShot(dashSFX);
         gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
         GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
         yield return new WaitForSeconds(0.1f);
@@ -123,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
             
             if (canSuperJump)
             {
-                Debug.Log("SuperJump");
                 StartCoroutine(JumpCoroutine());
             }
         }
@@ -132,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator JumpCoroutine() //super vertical jump animation coroutine
     {
         canSuperJump = false;
+        audio.PlayOneShot(superJumpSFX);
         Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
         gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
         //GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
@@ -175,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator ShurikenCoroutine()
     {
         canThrowShuriken = false;
+        audio.PlayOneShot(shurikenSFX);
         GameObject shurik = Instantiate(shuriken, lefthand.position, lefthand.rotation);
         shurik.GetComponent<Rigidbody>().AddForce(lefthand.forward * shurikenSpeed);
         yield return new WaitForSeconds(shurikenDelay);
