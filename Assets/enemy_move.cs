@@ -9,9 +9,13 @@ public class enemy_move : MonoBehaviour
     GameObject player;
     float distToPlayer;
     bool playerNoticed = false;
+    bool isAttacking = false;
 
     public Animator animator;
     public float detectionRange;
+    public float attackRange;
+    public float shurikenSpeed = 3000f;
+    public GameObject shuriken;
 
     void Start()
     {
@@ -23,6 +27,20 @@ public class enemy_move : MonoBehaviour
     void Update()
     {
         distToPlayer = Vector3.Distance(enemy.transform.position, player.transform.position);
+        NinjaMovement();
+        NinjaAttacking();
+
+    }
+
+
+
+
+
+
+
+
+    void NinjaMovement()
+    {
         if (distToPlayer < detectionRange) //Player within range
         {
             enemy.isStopped = false;
@@ -43,7 +61,57 @@ public class enemy_move : MonoBehaviour
                 playerNoticed = false;
                 animator.SetBool("isPlayerNoticed", false);
             }
+
         }
+    }
+
+
+
+
+
+
+
+
+    void NinjaAttacking()
+    {
+        if (distToPlayer < attackRange) //Player within range
+        {
+            enemy.isStopped = true;
+
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                animator.SetBool("isAttacking", true);
+                StartCoroutine(ninjaThrowDelay());
+
+            }
+        }
+        else //Player not within range
+        {
+
+            if (isAttacking)
+            {
+                isAttacking = false;
+                animator.SetBool("isAttacking", false);
+
+            }
+
+        }
+    }
+
+
+    IEnumerator ninjaThrowDelay()
+    {
+        //ATTACK HERE
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+
+        //create the rotation we need to be in to look at the target
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        GameObject shurik = Instantiate(shuriken, transform.position + new Vector3(0, 1, 0), transform.rotation);
+        shurik.GetComponent<Rigidbody>().AddForce(direction * shurikenSpeed);
+        yield return new WaitForSeconds(2);
+        isAttacking = false;
+        animator.SetBool("isAttacking", false);
     }
 
     void OnDrawGizmosSelected()
