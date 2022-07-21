@@ -102,6 +102,7 @@ public class enemy_move : MonoBehaviour
 
     IEnumerator ninjaThrowDelay()
     {
+        yield return new WaitForSeconds(1f);
         //ATTACK HERE
         Vector3 direction = (player.transform.position - transform.position).normalized;
 
@@ -109,7 +110,7 @@ public class enemy_move : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         GameObject shurik = Instantiate(shuriken, transform.position + new Vector3(0, 1, 0), transform.rotation);
         shurik.GetComponent<Rigidbody>().AddForce(direction * shurikenSpeed);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1f);
         isAttacking = false;
         animator.SetBool("isAttacking", false);
     }

@@ -50,7 +50,7 @@ MonoBehaviour:
   animator: {fileID: 6191457305326748475}
   detectionRange: 12.86
   attackRange: 5
-  shurikenSpeed: 3000
+  shurikenSpeed: 500
   shuriken: {fileID: 5363367787364391098, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
 --- !u!195 &4324423218697244409
 NavMeshAgent:

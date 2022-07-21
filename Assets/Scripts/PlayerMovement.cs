@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
     public float superJumpForce = 6000f;
     public float shurikenSpeed = 3500f;
     public float dashDelay = 3f;
-    public float superJumpDelay = 20f;
+    public float superJumpDelay = 10f;
     public float shurikenDelay = 2.5f;
     public int minSpawnRange = 20;
     public int maxSpawnRange = 50;
     public int numEnemies = 100;
+    public int health = 100;
+    public int shurikenDamage = 10;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
@@ -62,8 +65,7 @@ public class PlayerMovement : MonoBehaviour
                 default:
                     break;
             }
-            Debug.Log("SPAWN");
-            Instantiate(enemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            Instantiate(enemy, new Vector3(xPos, 0, zPos), Quaternion.identity);
             yield return new WaitForSeconds(1f);
             enemyCount++;
         }
@@ -179,9 +181,29 @@ public class PlayerMovement : MonoBehaviour
         canThrowShuriken = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if(other.tag == "EnemyWeapon")
+        {
+            Destroy(other.gameObject);
+            health -= shurikenDamage;
+            Debug.Log(health);
+
+        }
+    }
+    public void Health()
+    {
+        if(health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Health();
         GroundCheck();
     }
 }
