@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeleteParticle : MonoBehaviour
 {
+    public float delay = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,11 @@ public class DeleteParticle : MonoBehaviour
 
     IEnumerator DeletePart()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(delay
+            
+            
+            
+            );
         Destroy(gameObject);
 
     }

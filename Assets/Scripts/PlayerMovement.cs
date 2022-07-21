@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,19 +10,74 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool canDoubleJump = true;
     private bool canSuperJump = true;
+    private bool canThrowShuriken = true;
     public float jumpForce = 500f;
     public float dashSpeed = 100f;
     public float superJumpForce = 6000f;
+    public float shurikenSpeed = 3500f;
     public float dashDelay = 3f;
-    public float superJumpDelay = 20f;
+    public float superJumpDelay = 10f;
+    public float shurikenDelay = 2.5f;
+    public int minSpawnRange = 20;
+    public int maxSpawnRange = 50;
+    public int numEnemies = 100;
+    public int health = 100;
+    public int shurikenDamage = 10;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
     public GameObject dashParticle;
+    public GameObject shuriken;
+    public Transform lefthand;
+    public GameObject enemy;
+    public AudioClip jumpSFX;
+    public AudioClip dashSFX;
+    public AudioClip superJumpSFX;
+    public AudioClip shurikenSFX;
+    private AudioSource audio;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        StartCoroutine(EnemySpawn());
+        audio = gameObject.GetComponent<AudioSource>();
+    }
 
-    public void Jump(InputAction.CallbackContext context)
+    IEnumerator EnemySpawn()
+    {
+        int enemyCount = 0;
+        while(enemyCount < numEnemies){
+            int xPos = 0;
+            int zPos = 0;
+            int side = Random.Range(1, 4);
+            switch (side)
+            {
+                case 1:
+                    xPos = Random.Range((int)body.position.x + minSpawnRange, (int)body.position.x + maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 2:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 3:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z + minSpawnRange, (int)body.position.z + maxSpawnRange);
+                    break;
+                case 4:
+                    xPos = Random.Range((int)body.position.x - minSpawnRange, (int)body.position.x - maxSpawnRange);
+                    zPos = Random.Range((int)body.position.z - minSpawnRange, (int)body.position.z - maxSpawnRange);
+                    break;
+                default:
+                    break;
+            }
+            Instantiate(enemy, new Vector3(xPos, 0, zPos), Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+            enemyCount++;
+        }
+    }
+
+    public void Jump(InputAction.CallbackContext context) //jump and double jump
     {
         if (context.performed)
         {
@@ -30,12 +86,14 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Jump");
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                audio.PlayOneShot(jumpSFX);
 
             }
             else if ((!isGrounded && canDoubleJump == true))
             {
                 gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, 0, gameObject.GetComponent<Rigidbody>().velocity.z);
                 gameObject.GetComponent<Rigidbody>().AddForce(0, jumpForce, 0);
+                audio.PlayOneShot(jumpSFX);
                 canDoubleJump = false;
                 Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
             }
@@ -43,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void DashSlash(InputAction.CallbackContext context)
+    public void DashSlash(InputAction.CallbackContext context) //dash attack
     {
         if (context.performed)
         {
@@ -55,11 +113,10 @@ public class PlayerMovement : MonoBehaviour
     }
   
 
-    IEnumerator DashCoroutine()
+    IEnumerator DashCoroutine()//dash couratine and animation
     {
-        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
-        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canDash = false;
+        audio.PlayOneShot(dashSFX);
         gameObject.GetComponent<Rigidbody>().AddForce(camera.transform.forward * dashSpeed);
         GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
         yield return new WaitForSeconds(0.1f);
@@ -68,24 +125,23 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-    public void SuperJump(InputAction.CallbackContext context)
+    public void SuperJump(InputAction.CallbackContext context) //super vertical jump
     {
         if (context.performed)
         {
             
             if (canSuperJump)
             {
-                Debug.Log("SuperJump");
                 StartCoroutine(JumpCoroutine());
             }
         }
     }
 
-    IEnumerator JumpCoroutine()
+    IEnumerator JumpCoroutine() //super vertical jump animation coroutine
     {
-        //float xVelocity = gameObject.GetComponent<Rigidbody>().velocity.x;
-        //float zVelocity = gameObject.GetComponent<Rigidbody>().velocity.z;
         canSuperJump = false;
+        audio.PlayOneShot(superJumpSFX);
+        Instantiate(jumpParticle, body.transform.position, body.transform.rotation);
         gameObject.GetComponent<Rigidbody>().AddForce(0, superJumpForce, 0);
         //GameObject particle = Instantiate(dashParticle, body.transform.position, camera.transform.rotation);
         //yield return new WaitForSeconds(0.3f);
@@ -110,18 +166,54 @@ public class PlayerMovement : MonoBehaviour
             //canJ
             isGrounded = false;
         }
+    }
+
+    public void ShurikenThrow(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (canThrowShuriken)
+            {
+                StartCoroutine(ShurikenCoroutine());
+            }
+            
+        }
         
     }
 
-void Start()
+    IEnumerator ShurikenCoroutine()
     {
-        
+        canThrowShuriken = false;
+        audio.PlayOneShot(shurikenSFX);
+        GameObject shurik = Instantiate(shuriken, lefthand.position, lefthand.rotation);
+        shurik.GetComponent<Rigidbody>().AddForce(lefthand.forward * shurikenSpeed);
+        yield return new WaitForSeconds(shurikenDelay);
+        canThrowShuriken = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if(other.tag == "EnemyWeapon")
+        {
+            Destroy(other.gameObject);
+            health -= shurikenDamage;
+            Debug.Log(health);
+
+        }
+    }
+    public void Health()
+    {
+        if(health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        Health();
         GroundCheck();
-        //Debug.Log(isGrounded);
     }
 }
