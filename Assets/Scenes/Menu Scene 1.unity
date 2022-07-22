@@ -1013,6 +1013,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[36].m_ActionId
+      value: 983b1fa6-0de8-4d1c-952c-ecb668268d9a
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[37].m_ActionId
+      value: 2061c123-1e38-4b34-b60a-78813981c9ed
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[36].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[37].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[25].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[25].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1728801620}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[25].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 746043570, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
+      propertyPath: m_ActionEvents.Array.data[25].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TitleScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4745578051602052085, guid: ac665d7e7b087104c8a837d2acd33253, type: 3}
       propertyPath: m_Name
       value: Menu XR Origin
@@ -1134,7 +1166,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Untitled Game
+  m_Text: AssaXin
 --- !u!222 &1147295000
 CanvasRenderer:
   m_ObjectHideFlags: 0
