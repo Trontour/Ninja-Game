@@ -5,11 +5,12 @@ using UnityEngine;
 public class NinjaDeath : MonoBehaviour
 {
     public GameObject ragdoll;
+    private GameObject player;
     private bool hasDied = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class NinjaDeath : MonoBehaviour
         {
             if(hasDied == false){
                 Instantiate(ragdoll, transform.position + new Vector3(0, 0, 0), transform.rotation);
-
+                player.GetComponent<PlayerMovement>().killCountIncrease();
                 hasDied = true;
             }
             Destroy(gameObject);

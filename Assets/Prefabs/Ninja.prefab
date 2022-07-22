@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 97512706626617463}
   m_Layer: 0
   m_Name: Ninja
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6191457305326748475}
-  detectionRange: 12.86
-  attackRange: 5
+  detectionRange: 18.56
+  attackRange: 9
   shurikenSpeed: 500
   shuriken: {fileID: 5363367787364391098, guid: 8e494fc3b943e0a438cd3765ca96df40, type: 3}
 --- !u!195 &4324423218697244409
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdoll: {fileID: 3213964002910027163, guid: c329917b3ed9a3541982aa51300e804a, type: 3}
-  deathSFX: {fileID: 8300000, guid: 03940564fa283e8448c632c803aea00f, type: 3}
 --- !u!82 &97512706626617463
 AudioSource:
   m_ObjectHideFlags: 0
@@ -302,4 +301,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdoll: {fileID: 0}
-  deathSFX: {fileID: 0}

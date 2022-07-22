@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public int numEnemies = 100;
     public int health = 100;
     public int shurikenDamage = 10;
+    public int killsToWin = 50;
     public Transform body;
     public Transform camera;
     public GameObject jumpParticle;
@@ -35,11 +36,14 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip superJumpSFX;
     public AudioClip shurikenSFX;
     private AudioSource audio;
+    private int killz = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
         audio = gameObject.GetComponent<AudioSource>();
+        killz = 0;
+        Debug.Log(killz);
     }
 
     
@@ -160,7 +164,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.tag == "EnemyWeapon")
         {
             Destroy(other.gameObject);
@@ -176,10 +179,30 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+    public void killCountIncrease()
+    {
+        killz += 1;
+        Debug.Log(killz);
+    }
+
+    public void checkWinStatus()
+    {
+        if(killz >= killsToWin)
+        {
+            Debug.Log("YOU WIN");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    public void setKillsZero()
+    {
+        killz = 0;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        checkWinStatus();
         Health();
         GroundCheck();
     }
