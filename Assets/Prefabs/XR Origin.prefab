@@ -131,9 +131,13 @@ MonoBehaviour:
   camera: {fileID: 4745578051922814508}
   jumpParticle: {fileID: 5405183139409696605, guid: a32b92f10f0005745879da7adb14b148, type: 3}
   dashParticle: {fileID: 6445078845829239174, guid: 9e02aa7e0bc426d418377684b27dc95e, type: 3}
-  shuriken: {fileID: 0}
+  shuriken: {fileID: 5363367787364391098, guid: d0fecbf79ab433b4cabb0fb32cbb354c, type: 3}
   lefthand: {fileID: 0}
-  enemy: {fileID: 0}
+  enemy: {fileID: 3213964002910027163, guid: 282728912d88eee40a38bc674b10eaa3, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
+  dashSFX: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
+  superJumpSFX: {fileID: 8300000, guid: 89d0a29c9136cf148a3fcb97f0d083fb, type: 3}
+  shurikenSFX: {fileID: 8300000, guid: d5dbe859bef1a884b85837f74f78ad1c, type: 3}
 --- !u!114 &746043570
 MonoBehaviour:
   m_ObjectHideFlags: 0
